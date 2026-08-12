@@ -386,26 +386,26 @@ iModel-Server 为企业定制版，基于 **Enterprise 订阅**，一次订阅�
 
 <br>
 
-### 一键安装 — 免费版 (v2.0.61)
+### 一键安装 — 免费版 (v2.0.62)
 
 | 平台          | 架构                | 下载链接                                                     |  大小  | 系统要求                  |
 | :------------ | :------------------ | :----------------------------------------------------------- | :----: | :------------------------ |
-| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-2.0.61-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-macOS-arm64.pkg) | ~33 MB | macOS 13.x 或更高版本     |
-| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-2.0.61-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-macOS-x64.pkg) | ~36 MB | macOS 13.x 或更高版本     |
-| 🪟 **Windows** | X64                 | [下载 iModel-2.0.61-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-windows-x64-setup.exe) | ~22 MB | Windows 10/11             |
-| 🪟 **Windows** | ARM                 | [下载 iModel-2.0.61-windows-arm64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-windows-arm64-setup.exe) | ~18 MB | Windows 10/11             |
-| 🐧 **Linux**   | X64                 | [下载 iModel-2.0.61-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-linux-x64.tar.gz) | ~37 MB | Ubuntu 20.04+ / CentOS 7+ |
-| 🐧 **Linux**   | ARM64               | [下载 iModel-2.0.61-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-linux-arm64.tar.gz) | ~36 MB | Ubuntu 24.04 或更高版本   |
+| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-2.0.62-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.62-macOS-arm64.pkg) | ~33 MB | macOS 13.x 或更高版本     |
+| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-2.0.62-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.62-macOS-x64.pkg) | ~36 MB | macOS 13.x 或更高版本     |
+| 🪟 **Windows** | X64                 | [下载 iModel-2.0.62-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.62-windows-x64-setup.exe) | ~22 MB | Windows 10/11             |
+| 🪟 **Windows** | ARM                 | [下载 iModel-2.0.62-windows-arm64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.62-windows-arm64-setup.exe) | ~18 MB | Windows 10/11             |
+| 🐧 **Linux**   | X64                 | [下载 iModel-2.0.62-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.62-linux-x64.tar.gz) | ~37 MB | Ubuntu 20.04+ / CentOS 7+ |
+| 🐧 **Linux**   | ARM64               | [下载 iModel-2.0.62-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.62-linux-arm64.tar.gz) | ~36 MB | Ubuntu 24.04 或更高版本   |
 
-### 一键安装 — Pro 版 (v2.0.61)
+### 一键安装 — Pro 版 (v2.0.62)
 
 | 平台          | 架构                | 下载链接                                                     |  大小   | 系统要求                  |
 | :------------ | :------------------ | :----------------------------------------------------------- | :-----: | :------------------------ |
-| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-Pro-2.0.61-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-macOS-arm64.pkg) | ~275 MB | macOS 13.x 或更高版本     |
-| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-Pro-2.0.61-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-macOS-x64.pkg) | ~163 MB | macOS 13.x 或更高版本     |
-| 🪟 **Windows** | X64                 | [下载 iModel-Pro-2.0.61-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-windows-x64-setup.exe) | ~214 MB | Windows 10/11             |
-| 🐧 **Linux**   | X64                 | [下载 iModel-Pro-2.0.61-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-linux-x64.tar.gz) | ~372 MB | Ubuntu 20.04+ / CentOS 7+ |
-| 🐧 **Linux**   | ARM64               | [下载 iModel-Pro-2.0.61-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-linux-arm64.tar.gz) | ~330 MB | Ubuntu 24.04 或更高版本   |
+| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-Pro-2.0.62-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.62-macOS-arm64.pkg) | ~276 MB | macOS 13.x 或更高版本     |
+| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-Pro-2.0.62-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.62-macOS-x64.pkg) | ~164 MB | macOS 13.x 或更高版本     |
+| 🪟 **Windows** | X64                 | [下载 iModel-Pro-2.0.62-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.62-windows-x64-setup.exe) | ~216 MB | Windows 10/11             |
+| 🐧 **Linux**   | X64                 | [下载 iModel-Pro-2.0.62-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.62-linux-x64.tar.gz) | ~373 MB | Ubuntu 20.04+ / CentOS 7+ |
+| 🐧 **Linux**   | ARM64               | [下载 iModel-Pro-2.0.62-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.62-linux-arm64.tar.gz) | ~330 MB | Ubuntu 24.04 或更高版本   |
 
 ### iModel-Server（企业定制版）
 
@@ -490,7 +490,7 @@ A：运行 `imodel-server migrate <旧数据目录>`，自动备份旧目录、�
 
 <br>
 
-*版本 2.0.61 · 支持 macOS / Windows / Linux*
+*版本 2.0.62 · 支持 macOS / Windows / Linux*
 *iModel-Server 企业定制版 · 合作咨询 cooperate@imodel.work*
 *如有任何问题，请发送邮件至 support@imodel.work*
 
