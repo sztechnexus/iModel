@@ -3,13 +3,13 @@
 
 # 🧬 爱魔豆 iModel
 
-## AI 模型智能路由网关 · 让每一次调用都物超所值
+## AI 模型路由调度优化器 · 让每一次调用都物超所值
 
 <br>
 
 **「省心 · 省钱 · 省力」**
 
-> 智能分类路由 + Token 压缩 + 实时监控
+> 智能分类路由 · Token 压缩 · 企业级网关 · 实时监控
 > 将 API 调用成本直降 40%~70%
 
 </div>
@@ -24,15 +24,18 @@
 
 ### ❌ 你是不是也遇到这些问题？
 
-| 问题                              | 后果                       |
-| :-------------------------------- | :------------------------- |
-| 所有请求都用最强模型 → 杀鸡用牛刀 | **每月账单高得离谱**       |
-| 长对话历史越积越多 → Token 飞涨   | **一半的钱花在重复计算上** |
-| 手动切换模型 → 繁琐又容易出错     | **开发效率低下**           |
-| 没有统一监控 → 成本失控无从优化   | **月底对账一脸懵**         |
-| 多模型管理混乱 → API Key 散落各处 | **安全隐患大**             |
+| 问题                                             | 后果                       |
+| :----------------------------------------------- | :------------------------- |
+| 所有请求都用最强模型 → 杀鸡用牛刀                | **每月账单高得离谱**       |
+| 长对话历史越积越多 → Token 飞涨                  | **一半的钱花在重复计算上** |
+| 手动切换模型 → 繁琐又容易出错                    | **开发效率低下**           |
+| 没有统一监控 → 成本失控无从优化                  | **月底对账一脸懵**         |
+| 多模型 API Key 散落各处 → 无法统一管理           | **安全隐患大**             |
+| 团队共用 API → 并发争抢、无审计                  | **资源冲突、合规难**       |
+| 想在内网 / NAS / 服务器上部署网关 → 没有现成方案 | **只能手工脚本凑合**       |
 
 > **爱魔豆 iModel 一站式解决以上所有问题。**
+> 从个人桌面到企业基础设施，三档产品形态覆盖全场景。
 
 <br>
 
@@ -42,19 +45,66 @@
 
 <br>
 
-**爱魔豆 iModel** 是一款专为 AI 开发者打造的 **智能模型路由与网关管理工具**。它运行在你的电脑上，作为本地代理服务，自动为每一个 AI 请求选择 **最合适的模型**，并对长对话进行 **智能压缩**，在保证响应质量的前提下，**大幅降低 API 调用成本**。
+**爱魔豆 iModel** 是一套面向 AI 开发者与企业 IT 团队的 **智能模型路由与网关管理平台**。它由三大产品形态组成，运行在用户电脑、团队服务器、NAS 与云主机上，统一由 iModel-web 中央平台提供账号、订阅与策略同步。
 
 <br>
 
 **一句话理解爱魔豆：**
 
-> 🎯 你只管用 AI，怎么省钱交给爱魔豆。
+> 🎯 你只管用 AI，怎么省钱、怎么管、怎么部署，交给爱魔豆。
 
 <br>
 
 ---
 
-## 三、核心功能
+## 三、三大产品形态
+
+<br>
+
+爱魔豆从"个人桌面"到"企业基础设施"，提供三个清晰的产品形态：
+
+| 维度           |      🆓 **iModel (Free)**       |        🥇 **iModel-Pro**        |                     🏢 **iModel-Server**                      |
+| :------------- | :----------------------------: | :----------------------------: | :----------------------------------------------------------: |
+| **产品形态**   |          桌面托盘应用          |          桌面托盘应用          |                       **无界面服务器**                       |
+| **运行方式**   |       系统托盘 / 菜单栏        |       系统托盘 / 菜单栏        | **系统服务**（systemd / launchd / Windows Service / Docker） |
+| **进程模型**   |     双进程（托盘 + 服务）      |     双进程（托盘 + 服务）      |               **单进程**（FastAPI + uvicorn）                |
+| **访问方式**   |         本机 Dashboard         |         本机 Dashboard         |                     **LAN WebUI + CLI**                      |
+| **默认监听**   |       `127.0.0.1` 仅本机       |       `127.0.0.1` 仅本机       |           **`0.0.0.0` LAN 可达**（可回 localhost）           |
+| **管理入口**   | Dashboard (8799) + 服务 (8788) | Dashboard (8799) + 服务 (8788) |          **单端口 8788**（WebUI + API + 代理合一）           |
+| **智能路由**   |               ✅                |               ✅                |                              ✅                               |
+| **Token 压缩** |               ❌                |           ✅ Pro 核心           |                              ✅                               |
+| **自定义分类** |               ❌                |               ❌                |                              ✅                               |
+| **企业级鉴权** |         localhost-only         |         localhost-only         | **HTTPS 默认 + SSO (OIDC/SAML) + 作用域 Admin Key + 审计 + IP 封禁** |
+| **CLI**        |    `imodel-cli`（令牌管理）    |    `imodel-cli`（令牌管理）    |           **`imodel-server`**（完整生命周期管理）            |
+| **mDNS 发现**  |               ❌                |               ❌                |                    ✅ `imodelserver.local`                    |
+| **局域网共享** |               ❌                |       订阅权益（需重启）       |                         **默认能力**                         |
+| **目标用户**   |            个人尝鲜            |      个人开发者 / 小团队       |        **10-1000 人团队 / 企业 / NAS 玩家 / 云部署**         |
+
+<br>
+
+```
+┌────────────────────────────────────────────────────────────────┐
+│  iModel-web 中央平台（imodel.work）                               │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │  账号注册 · 订阅管理 · 支付（支付宝/微信/抖音）              │  │
+│  │  反馈中心 · 使用统计 · 平台 API                            │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└──────────────────────────┬─────────────────────────────────────┘
+                           │  账号/订阅/策略同步
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+┌──────────────┐   ┌──────────────┐   ┌──────────────────────┐
+│ iModel Free  │   │ iModel-Pro   │   │  iModel-Server       │
+│ 桌面托盘应用  │   │ 桌面托盘应用  │   │  企业级无界面服务器    │
+│ 本机自用      │   │ 本机自用      │   │  LAN / Docker / 云    │
+└──────────────┘   └──────────────┘   └──────────────────────┘
+```
+
+<br>
+
+---
+
+## 四、核心功能
 
 <br>
 
@@ -82,9 +132,18 @@
 
 **效果：** 日常使用中，约 **65% 的请求自动走经济模型**，仅复杂任务才调用高性能模型。
 
+**路由能力分层：**
+
+| 能力                | iModel Free | iModel-Pro |   iModel-Server    |
+| :------------------ | :---------: | :--------: | :----------------: |
+| v4.1 智能分类器     |      ✅      |     ✅      |         ✅          |
+| 自定义领域分类      |      ❌      |     ❌      |      ✅ 无上限      |
+| 备用模型 + 故障切换 |      ✅      |     ✅      |         ✅          |
+| 负载均衡            |    基础     |    完整    | 完整 + 多 Provider |
+
 <br>
 
-### 📦 Token 压缩 · 长对话不怕贵
+### 📦 Token 压缩 · 长对话不怕贵（Pro / Server）
 
 AI 对话中，历史消息越长，Token 消耗越大。爱魔豆的压缩引擎能 **自动压缩长对话历史**，保留核心信息，丢掉冗余内容。
 
@@ -100,6 +159,7 @@ AI 对话中，历史消息越长，Token 消耗越大。爱魔豆的压缩引�
 - 🚀 响应速度提升 30%~50%（需要处理的 Token 大幅减少）
 - 🎯 响应质量保持 95% 以上（智能压缩，保留关键信息）
 - 🔧 压缩策略灵活可调（保护最近 N 轮对话不受压缩）
+- 🧠 Pro/Server 支持 headroom-ai 集成、多档位策略、本地向量记忆、图像压缩
 
 <br>
 
@@ -114,6 +174,110 @@ AI 对话中，历史消息越长，Token 消耗越大。爱魔豆的压缩引�
 | **智能超时**     | 排队超时自动通知，避免死等             |
 | **故障转移**     | 模型出错自动切换到备用模型，服务不中断 |
 | **冷却保护**     | 失败模型自动冷却，避免连续报错         |
+
+<br>
+
+### 🏢 iModel-Server 企业级能力
+
+iModel-Server 将爱魔豆从"桌面工具"升级为"基础设施"：
+
+<br>
+
+**🔐 企业级安全（v1 标配，对标 Synology DSM 7.2+）**
+
+| 能力                  | 说明                                                         |
+| :-------------------- | :----------------------------------------------------------- |
+| **默认 HTTPS**        | 首启自动生成自签证书（Ed25519/RSA），可选 Let's Encrypt 正式证书 |
+| **SSO 单点登录**      | OIDC + SAML 2.0 同时支持（Azure AD / Keycloak / Okta / Google） |
+| **本地管理员兜底**    | SSO 不可达时仍可管理，首启引导创建本地管理员                 |
+| **作用域 Admin Key**  | 每个 Key 带权限子集（`stats.read` / `config.write` 等），只显示一次，SHA-256 存储 |
+| **IP 自动封禁**       | 登录失败超限自动封禁（可配阈值 + IPv6 /64 前缀封禁）         |
+| **可信网络层**        | CIDR 白名单，可信子网降摩擦（每次请求重验来源 IP）           |
+| **关键操作审计**      | 登录/登出/配置变更/Key 管理/会话撤销全审计，append-only 不可篡改 |
+| **会话管理**          | 列出所有登录设备，可单独撤销，空闲 90 天自动清理             |
+| **Clickjacking 防护** | 默认开启 `X-Frame-Options: DENY` + CSP                       |
+| **密码策略**          | 强密码下限 12 字符、可选密码过期、首次登录强制改密           |
+
+<br>
+
+**🖥️ 服务器形态 · 运维友好**
+
+| 能力                 | 说明                                                         |
+| :------------------- | :----------------------------------------------------------- |
+| **系统服务**         | systemd / launchd / Windows Service (NSSM) 一键安装          |
+| **Docker**           | 多架构镜像（amd64 + arm64），单卷挂载所有数据                |
+| **单端口模型**       | 8788 同时服务代理 + 管理面 + WebUI + /health，路由级鉴权隔离 |
+| **mDNS 发现**        | 广播 `imodelserver.local`，装完即找到（对标 Home Assistant） |
+| **CLI 生命周期管理** | `imodel-server start/stop/status/logs/doctor/update`         |
+| **回滚机制**         | DB 备份 3 份、配置备份 5 份、旧版本二进制 1 份               |
+| **优雅迁移**         | `imodel-server migrate <旧目录>` 一键从桌面版迁移，支持 dry-run / rollback |
+| **反向代理友好**     | 支持 nginx / Caddy / Tailscale serve，trusted_proxies 白名单 |
+| **/health + /ready** | Kubernetes / systemd 健康检查就绪                            |
+
+<br>
+
+**🌐 WebUI 管理界面（P4 完成，8 个页面）**
+
+| 页面              | 功能                                           |
+| :---------------- | :--------------------------------------------- |
+| 🏠 **Overview**    | 概览：服务状态、今日请求/Token/延迟、故障告警  |
+| 📊 **Routing**     | 模型路由：实时状态、24h 趋势图、队列、最近请求 |
+| 🏷️ **Categories**  | 分类路由：分类管理、分布图表、启用/禁用        |
+| 🔑 **Entries**     | 转发令牌：API Key 管理、复制、统计             |
+| 🗜 **Compress**    | Token 压缩：压缩率、趋势、配置管理             |
+| 🧩 **Config Apps** | 客户端配置：一键配置 Claude Code/Cursor 等     |
+| 📝 **Feedback**    | 用户反馈：提交反馈、查看待发送队列             |
+| ⚙️ **Settings**    | 设置：会话管理、Admin Key、TLS 证书            |
+
+统一导航栏、oklch 设计系统、Auto/Light/Dark 主题自适应。
+
+<br>
+
+**🔌 CLI `imodel-server` · 瘦 HTTP 客户端**
+
+```bash
+imodel-server
+├─ run                        # 前台运行（容器 / 调试）
+├─ install / uninstall        # 注册/注销平台服务
+├─ start / stop / restart     # 服务控制
+├─ status [--json] [--check]  # systemctl 风格状态
+├─ logs [--follow] [--grep=]  # 日志查看
+├─ setup                      # 首次引导（严格本机 only）
+├─ migrate <旧目录>           # 从桌面版迁移
+├─ config get/set/edit/reload/rollback
+├─ entry list/add/remove/regenerate
+├─ provider list/add/update/verify
+├─ category list/add/edit/remove
+├─ stats today/hourly/summary/top [--watch]
+├─ compress status/profile/model
+├─ config-apps list/apply     # 客户端一键配置
+├─ update check/apply/rollback
+├─ tls setup/show/fingerprint # 自签证书管理
+├─ doctor                     # 诊断：端口/权限/数据库/配置
+└─ api <METHOD> <PATH>        # 原始请求透传（调试）
+```
+
+> 所有管理命令走 `/admin/*` HTTP API，CLI 与 WebUI 调用同一条 API 路径，行为永不分歧。
+
+<br>
+
+### 🧩 客户端自动配置生态
+
+爱魔豆内置 **Config Script Registry**（配置脚本注册表），一键配置 17+ 主流 AI 客户端：
+
+| 客户端类型         | 支持列表                                                     |
+| :----------------- | :----------------------------------------------------------- |
+| **AI 编程工具**    | Claude Code、Cursor、Aider、Cline、Continue、Windsurf、Void、GitHub Copilot Chat |
+| **桌面对话客户端** | Cherry Studio、BoltAI、LobeChat、Open WebUI、TypingMind      |
+| **命令行 LLM CLI** | Codex CLI、Gemini CLI、opencode、llm                         |
+| **其他**           | Tabby                                                        |
+
+**工作机制：**
+
+- 静态 YAML 描述文件托管在 GitHub Pages / Cloudflare Pages
+- 客户端定期检查 Registry 更新，本地执行配置脚本
+- 自动检测 App 安装状态、自动修改配置文件、自动创建 API Key
+- 社区可贡献 PR 扩展支持更多客户端
 
 <br>
 
@@ -139,77 +303,31 @@ AI 对话中，历史消息越长，Token 消耗越大。爱魔豆的压缩引�
 │   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━       │
 │   压缩前: 3,500,000  |  压缩后: 1,200,000  |  节省 66%    │
 │                                                           │
-│   最近错误:                                                │
-│   ❌ claude-pro  rate_limit  12:34:56                     │
-│   ⚠️ gpt-4o     timeout     12:30:22                     │
+│   故障告警:                                                │
+│   ⚠️ claude-pro 故障切换中   ❌ gpt-4o 已冷却              │
+│                                                           │
+│   审计日志（Server 版）:                                    │
+│   ✅ admin login 09:23  🔧 config reload 09:45            │
 └─────────────────────────────────────────────────────────┘
 ```
 
-**所有数据永久保存**，支持按天/周/月查看历史趋势，帮你持续优化成本。
+**所有数据永久保存**，支持按天/周/月查看历史趋势，SQLite WAL 模式，iModel-Server 支持多 worker + LRU 缓存。
 
 <br>
 
 ### 🖥️ 跨平台 · 全桌面覆盖
 
-| 平台          |    支持    | 体验                    |
-| :------------ | :--------: | :---------------------- |
-| 🍎 **macOS**   | ✅ 完整支持 | 菜单栏图标 + 原生通知   |
-| 🪟 **Windows** | ✅ 完整支持 | 系统托盘 + Toast 通知   |
-| 🐧 **Linux**   | ✅ 完整支持 | AppIndicator + X11 支持 |
-
-**安装后做什么？** 双击打开 → 登录 → 启动服务 → 开始使用，全程不超过 1 分钟。
+| 平台           | iModel Free | iModel-Pro |            iModel-Server             |
+| :------------- | :---------: | :--------: | :----------------------------------: |
+| 🍎 **macOS**    | ✅ 完整支持  | ✅ 完整支持 |         ✅ LaunchAgent + .pkg         |
+| 🪟 **Windows**  | ✅ 完整支持  | ✅ 完整支持 | ✅ Windows Service (NSSM) + InnoSetup |
+| 🐧 **Linux**    | ✅ 完整支持  | ✅ 完整支持 |         ✅ systemd + .tar.gz          |
+| 🐳 **Docker**   |      —      |     —      |      ✅ 多架构（amd64 + arm64）       |
+| 🍺 **Homebrew** |      —      |     —      |         ✅ formula（规划中）          |
 
 <br>
 
-### 💻 CLI · 命令行一键接入
-
-> **imodel-cli** 是 iModel 内置的命令行工具，专为 AI 智能体设计，无需启动 Dashboard，一条命令就能创建 API 令牌并获取 Base URL。
-
-```
-安装位置（macOS）：
-  /Applications/iModel.app/Contents/MacOS/imodel-cli
-
-安装位置（Windows）：
-  %ProgramFiles%\iModel\imodel-cli.exe
-
-安装位置（Linux）：
-  /usr/local/bin/imodel-cli
-```
-
-#### 三大核心功能
-
-| 命令     | 作用                    | 典型场景                                                     |
-| -------- | ----------------------- | ------------------------------------------------------------ |
-| `token`  | 创建/查询/删除 API 令牌 | 为 Claude Code、Hermes、Codex CLI 等 AI 工具配置 iModel 网关 |
-| `agent`  | Agent 授权管理          | 首次授权 AI 工具调用 CLI，建立白名单机制                     |
-| `config` | 本地 App 一键配置       | 自动检测并配置本地 App 使用 iModel 代理（支持 Claude Code、Cursor、Cline 等） |
-
-#### 快速开始：为 Hermes 配置 iModel
-
-```bash
-# ① 首次使用：授权 Hermes Agent
-imodel-cli agent authorize hermes --name "Hermes"
-
-# ② 创建 OpenAI 协议令牌（Hermes 使用 Chat Completions API）
-IMODEL_AGENT_ID=hermes imodel-cli token create openai \
-  --name "Hermes 令牌" \
-  --id hermes
-
-# ③ 查看创建的令牌详情
-IMODEL_AGENT_ID=hermes imodel-cli token get hermes
-
-# ④ 列出所有令牌
-IMODEL_AGENT_ID=hermes imodel-cli token list
-```
-
-> **输出结果**：创建成功后会返回 `api_key` 和 `base_url`，直接填入 Hermes 的环境变量即可：
->
-> ```
-> OPENAI_API_KEY=mr-hermes-xxxxxxxxxxxx
-> OPENAI_BASE_URL=http://127.0.0.1:8788/v1/
-> ```
-
-#### 支持的协议类型
+### 💻 三协议代理 · 兼容主流生态
 
 | 协议        | 用途                    | 代理端点                    | 适用工具                      |
 | ----------- | ----------------------- | --------------------------- | ----------------------------- |
@@ -217,56 +335,27 @@ IMODEL_AGENT_ID=hermes imodel-cli token list
 | `openai`    | OpenAI Chat Completions | `POST /v1/chat/completions` | Hermes、GMOS、OpenAI 兼容工具 |
 | `responses` | OpenAI Responses API    | `POST /v1/responses`        | Codex CLI                     |
 
-#### 一键配置本地 App
+> 所有形态的产品都支持三协议代理，开箱即用。
 
-```bash
-# 查看支持配置的 App 列表
-imodel-cli config list
+<br>
 
-# 自动配置 Claude Code
-imodel-cli config setup claude-code
+### 🔑 转发令牌（Entry）体系
 
-# 查看配置状态
-imodel-cli config status
-```
+统一的 API Key 管理体系：
 
-> `config setup` 会自动检测 App 安装状态，创建令牌并修改配置文件，全程无需手动操作。
-
-#### 安全机制（三层保护）
-
-```
-  身份识别 ────▶ IMODEL_AGENT_ID 声明调用方身份
-      │
-  Agent 授权 ────▶ 首次使用需 agent authorize 加入白名单
-      │
-  iModel 登录 ────▶ 未登录时拒绝所有 CLI 操作
-```
-
-- **授权管理**：`agent list` 查看已授权列表，`agent revoke` 撤销授权
-- **删除保护**：删除令牌需要交互式终端确认，防止误删
-- **JSON 输出**：所有命令支持 `--json` 参数，便于 AI 工具解析
-
-#### AI 智能体集成示例
-
-```bash
-# 智能体自动获取令牌（JSON 格式，便于脚本解析）
-IMODEL_AGENT_ID=my-agent imodel-cli --json token create openai --name "My Agent"
-
-# 返回结构化 JSON：
-# {
-#   "api_key": "mr-my-agent-a1b2c3d4e5f6",
-#   "base_url": "http://127.0.0.1:8788/v1/",
-#   "protocol": "openai"
-# }
-```
-
-> **最佳实践**：每个 AI 应用使用独立的 Agent ID，便于审计和权限管理。
+| 能力           | 说明                                                  |
+| :------------- | :---------------------------------------------------- |
+| **多协议 Key** | 每个 Entry 可绑定 Anthropic / OpenAI / Responses 协议 |
+| **路由策略**   | 每个 Key 可独立路由策略（绑定特定分类、特定模型）     |
+| **压缩覆盖**   | 每个 Key 可覆盖全局压缩策略                           |
+| **配额管理**   | 配合 iModel-web 订阅，限制 Key 数量与模型数量         |
+| **作用域管理** | iModel-Server 的 Admin Key 带权限子集，最小权限原则   |
 
 <br>
 
 ---
 
-## 四、谁在用
+## 五、谁在用
 
 <br>
 
@@ -282,11 +371,19 @@ IMODEL_AGENT_ID=my-agent imodel-cli --json token create openai --name "My Agent"
 
 > *"我们给内部 20 多个开发者统一配置了爱魔豆企业版，自定义分类能力让不同团队用不同的模型路由策略。Token 压缩每个月省下 40%+ 的 Token 费，老板非常满意。"*
 
+### 🖥️ 企业 IT · 某科技公司基础设施团队
+
+> *"我们把 iModel-Server 部署在内部 NAS 上，作为全公司的 AI 网关。SSO 接入我们的 Azure AD，员工用企业账号直接登录。审计日志满足合规要求，IP 封禁帮我们挡住了几次异常访问。"*
+
+### 🐳 运维工程师 · 容器化部署
+
+> *"Docker 一行命令启动，单卷挂载不丢数据，/health 直接接 Kubernetes 探针。CLI 的 doctor 命令帮我快速定位配置问题，比手写 nginx 代理方案省太多事了。"*
+
 <br>
 
 ---
 
-## 五、方案与定价
+## 六、方案与定价
 
 <br>
 
@@ -301,6 +398,12 @@ IMODEL_AGENT_ID=my-agent imodel-cli --json token create openai --name "My Agent"
 
 <br>
 
+**iModel-Server 定价：**
+
+iModel-Server 为企业定制版，基于 **Enterprise 订阅**，一次订阅即可在团队内通过局域网分发，支持无上限的 API Key、模型与自定义分类。如需私有化部署、SSO 接入或定制开发，请联系企业合作咨询：[cooperate@imodel.work](mailto:cooperate@imodel.work)。
+
+<br>
+
 **为什么选订阅制而不是按量付费？**
 
 - ✅ **成本可预测** — 每月固定支出，不怕突发调用量
@@ -311,60 +414,79 @@ IMODEL_AGENT_ID=my-agent imodel-cli --json token create openai --name "My Agent"
 
 ---
 
-## 六、和竞品比好在哪？
+## 七、和竞品比好在哪？
 
 <br>
 
-| 对比维度                 |  🧬 爱魔豆 iModel   | OpenRouter | LiteLLM  | One API  |
-| :----------------------- | :----------------: | :--------: | :------: | :------: |
-| **智能路由（按复杂度）** |     ✅ **独家**     |     ❌      |    ❌     |    ❌     |
-| **Token 压缩**           |     ✅ **独家**     |     ❌      |    ❌     |    ❌     |
-| **跨平台桌面应用**       |     ✅ **独家**     |     ❌      |    ❌     |    ❌     |
-| **订阅制（成本可控）**   |         ✅          | ❌ 按量付费 |    ❌     |    ❌     |
-| **中国本土化**           |  ✅ 中文+国内支付   | ❌ 可能被墙 |    ❌     |    ✅     |
-| **数据本地化**           |    ✅ 数据在本地    |   ❌ SaaS   | ✅ 自托管 | ✅ 自托管 |
-| **实时监控面板**         |     ✅ 功能完整     |   ⚠️ 基础   |  ⚠️ 基础  |  ⚠️ 基础  |
-| **自动故障转移**         |         ✅          |     ✅      |  ⚠️ 有限  |    ❌     |
-| **双协议支持**           | ✅ OpenAI+Anthropic |     ✅      |    ✅     |    ✅     |
+| 对比维度                   |       🧬 爱魔豆 iModel        | OpenRouter | LiteLLM  | One API  |
+| :------------------------- | :--------------------------: | :--------: | :------: | :------: |
+| **智能路由（按复杂度）**   |          ✅ **独家**          |     ❌      |    ❌     |    ❌     |
+| **Token 压缩**             |          ✅ **独家**          |     ❌      |    ❌     |    ❌     |
+| **桌面应用 + 系统托盘**    |          ✅ **独家**          |     ❌      |    ❌     |    ❌     |
+| **企业级无界面服务器**     |       ✅ iModel-Server        |     ❌      | ⚠️ 自托管 | ⚠️ 自托管 |
+| **SSO (OIDC + SAML)**      |          ✅ v1 标配           |     ❌      |  企业版  |    ❌     |
+| **关键操作审计**           |          ✅ v1 标配           |     ❌      |  企业版  |  ⚠️ 基础  |
+| **mDNS 局域网发现**        |          ✅ **独家**          |     ❌      |    ❌     |    ❌     |
+| **订阅制（成本可控）**     |              ✅               | ❌ 按量付费 |    ❌     |    ❌     |
+| **中国本土化**             |       ✅ 中文+国内支付        | ❌ 可能被墙 |    ❌     |    ✅     |
+| **数据本地化**             |         ✅ 数据在本地         |   ❌ SaaS   | ✅ 自托管 | ✅ 自托管 |
+| **客户端一键配置**         |         ✅ 17+ 客户端         |     ❌      |    ❌     |    ❌     |
+| **Docker 多架构**          |       ✅ amd64 + arm64        |     —      |    ✅     |    ✅     |
+| **自动故障转移**           |              ✅               |     ✅      |  ⚠️ 有限  |    ❌     |
+| **三协议支持**             | ✅ OpenAI+Anthropic+Responses |     ✅      |    ✅     |    ✅     |
+| **远程访问中继（规划中）** |     ✅ QuickConnect 模式      |     —      |    —     |    —     |
 
-**爱魔豆的三大独家优势：**
+**爱魔豆的四大独家优势：**
 
 1. 🧠 **智能路由** — 只有爱魔豆能按请求复杂度自动分配模型
 2. 📦 **Token 压缩** — 独家技术，长对话成本直降 60%+
-3. 🖥️ **桌面应用** — 开机自启、系统托盘、一键管理，体验最佳
+3. 🖥️ **桌面 + 服务器双形态** — 个人到企业无缝升级路径
+4. 🏢 **企业级安全 v1 标配** — SSO / 审计 / IP 封禁 / 可信网络 / 作用域 Key
 
 <br>
 
 ---
 
-## 七、下载与安装
+## 八、下载与安装
 
 <br>
 
-### 一键安装 — 免费版
+### 一键安装 — 免费版 (v2.0.61)
 
 | 平台          | 架构                | 下载链接                                                     |  大小  | 系统要求                  |
 | :------------ | :------------------ | :----------------------------------------------------------- | :----: | :------------------------ |
-| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-2.0.35-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.35-macOS-arm64.pkg) | ~22 MB | macOS 13.x 或更高版本     |
-| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-2.0.35-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.35-macOS-x64.pkg) | ~36 MB | macOS 13.x 或更高版本     |
-| 🪟 **Windows** | X64                 | [下载 iModel-2.0.35-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.35-windows-x64-setup.exe) | ~19 MB | Windows 10/11             |
-| 🪟 **Windows** | ARM                 | [下载 iModel-2.0.35-windows-arm64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.35-windows-arm64-setup.exe) | ~18 MB | Windows 10/11             |
-| 🐧 **Linux**   | X64                 | [下载 iModel-2.0.35-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.35-linux-x64.tar.gz) | ~36 MB | Ubuntu 20.04+ / CentOS 7+ |
-| 🐧 **Linux**   | ARM64               | [下载 iModel-2.0.35-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.35-linux-arm64.tar.gz) | ~35 MB | Ubuntu 24.04 或更高版本   |
+| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-2.0.61-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-macOS-arm64.pkg) | ~33 MB | macOS 13.x 或更高版本     |
+| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-2.0.61-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-macOS-x64.pkg) | ~36 MB | macOS 13.x 或更高版本     |
+| 🪟 **Windows** | X64                 | [下载 iModel-2.0.61-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-windows-x64-setup.exe) | ~22 MB | Windows 10/11             |
+| 🪟 **Windows** | ARM                 | [下载 iModel-2.0.61-windows-arm64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-windows-arm64-setup.exe) | ~18 MB | Windows 10/11             |
+| 🐧 **Linux**   | X64                 | [下载 iModel-2.0.61-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-linux-x64.tar.gz) | ~37 MB | Ubuntu 20.04+ / CentOS 7+ |
+| 🐧 **Linux**   | ARM64               | [下载 iModel-2.0.61-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-2.0.61-linux-arm64.tar.gz) | ~36 MB | Ubuntu 24.04 或更高版本   |
 
-### 一键安装 — Pro 版
-
-> ⚠️ Pro 版桌面客户端目前支持 Windows X64、macOS、Linux 平台，**暂不支持 Windows ARM**，Windows ARM 用户可继续使用免费版。
+### 一键安装 — Pro 版 (v2.0.61)
 
 | 平台          | 架构                | 下载链接                                                     |  大小   | 系统要求                  |
 | :------------ | :------------------ | :----------------------------------------------------------- | :-----: | :------------------------ |
-| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-Pro-2.0.35-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.35-macOS-arm64.pkg) | ~271 MB | macOS 13.x 或更高版本     |
-| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-Pro-2.0.35-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.35-macOS-x64.pkg) | ~163 MB | macOS 13.x 或更高版本     |
-| 🪟 **Windows** | X64                 | [下载 iModel-Pro-2.0.35-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.35-windows-x64-setup.exe) | ~196 MB | Windows 10/11             |
-| 🐧 **Linux**   | X64                 | [下载 iModel-Pro-2.0.35-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.35-linux-x64.tar.gz) | ~372 MB | Ubuntu 20.04+ / CentOS 7+ |
-| 🐧 **Linux**   | ARM64               | [下载 iModel-Pro-2.0.35-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.35-linux-arm64.tar.gz) | ~330 MB | Ubuntu 24.04 或更高版本   |
+| 🍎 **macOS**   | Apple Silicon (ARM) | [下载 iModel-Pro-2.0.61-macOS-arm64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-macOS-arm64.pkg) | ~275 MB | macOS 13.x 或更高版本     |
+| 🍎 **macOS**   | Intel (X64)         | [下载 iModel-Pro-2.0.61-macOS-x64.pkg](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-macOS-x64.pkg) | ~163 MB | macOS 13.x 或更高版本     |
+| 🪟 **Windows** | X64                 | [下载 iModel-Pro-2.0.61-windows-x64-setup.exe](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-windows-x64-setup.exe) | ~214 MB | Windows 10/11             |
+| 🐧 **Linux**   | X64                 | [下载 iModel-Pro-2.0.61-linux-x64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-linux-x64.tar.gz) | ~372 MB | Ubuntu 20.04+ / CentOS 7+ |
+| 🐧 **Linux**   | ARM64               | [下载 iModel-Pro-2.0.61-linux-arm64.tar.gz](https://github.com/sztechnexus/iModel/releases/download/v2.0/iModel-Pro-2.0.61-linux-arm64.tar.gz) | ~330 MB | Ubuntu 24.04 或更高版本   |
 
-### 3 步上手
+### iModel-Server（企业定制版）
+
+iModel-Server 是面向企业客户的无界面服务器形态，基于 Enterprise 订阅，提供私有化部署、SSO 接入、审计合规等企业级能力。
+
+> **📧 企业合作咨询：** [cooperate@imodel.work](mailto:cooperate@imodel.work)
+
+| 平台       | 安装方式                                             |   状态   |
+| :--------- | :--------------------------------------------------- | :------: |
+| 🍎 macOS    | `.pkg` + LaunchAgent                                 | ✅ 已发布 |
+| 🐧 Linux    | `.tar.gz` + `install.sh`（自动写入 systemd unit）    | ✅ 已发布 |
+| 🪟 Windows  | InnoSetup `.exe` + NSSM 包装为 Windows Service       | ✅ 已发布 |
+| 🐳 Docker   | 官方镜像 `imodel-server:latest`（amd64 + arm64）     | 🚧 开发中 |
+| 🍺 Homebrew | `brew install imodel-server` + `brew services start` | 📋 规划中 |
+
+### 3 步上手（桌面版）
 
 ```
 1️⃣ 下载安装 →  2️⃣ 手机号登录 →  3️⃣ 启动服务 → 开始使用
@@ -377,21 +499,7 @@ IMODEL_AGENT_ID=my-agent imodel-cli --json token create openai --name "My Agent"
 - 🛠️ Claude Code / Claude Desktop → 指向 `http://127.0.0.1:8788/v1`
 - 🛠️ OpenAI API → 指向 `http://127.0.0.1:8788/v1`
 - 🛠️ LangChain / LlamaIndex → 配置代理地址即可
-- 🛠️ 任何兼容 OpenAI / Anthropic SDK 的工具 → 开箱即用
-
-<br>
-
----
-
-## 八、用户反馈
-
-<br>
-
-> ⭐⭐⭐⭐⭐ *"用了两周，账单从 2000 降到 600，强烈推荐。"* — 独立开发者 张工
-
-> ⭐⭐⭐⭐⭐ *"团队 5 个人一起用，并发控制和监控面板最实用，谁花了多少一目了然。"* — 某 AI 创业公司 CTO
-
-> ⭐⭐⭐⭐⭐ *"Token 压缩太香了，长对话从 3 万 Token 压缩到 1 万，质量完全没影响。"* — 某互联网公司 算法工程师
+- 🛠️ 任何兼容 OpenAI / Anthropic / Responses SDK 的工具 → 开箱即用
 
 <br>
 
@@ -402,19 +510,28 @@ IMODEL_AGENT_ID=my-agent imodel-cli --json token create openai --name "My Agent"
 <br>
 
 **Q：爱魔豆会收集我的数据吗？**
-A：不会。所有请求数据都存储在你的本地电脑上，爱魔豆只做智能路由和压缩，不收集、不上传你的对话内容。
+A：不会。所有请求数据都存储在你的本地电脑上（或你自己部署的 iModel-Server 上），爱魔豆只做智能路由和压缩，不收集、不上传你的对话内容。
 
 **Q：支持哪些模型供应商？**
-A：支持 OpenAI Chat Completions 和 Anthropic Messages 两种主流协议。兼容 Claude Code、Claude Desktop、OpenAI API 客户端，以及任何支持这两种协议的 AI 工具。更多模型持续接入中。
+A：支持 OpenAI Chat Completions、Anthropic Messages 和 OpenAI Responses 三种主流协议。兼容 Claude Code、Claude Desktop、OpenAI API 客户端，以及任何支持这三种协议的 AI 工具。未来将通过 provider 扩展支持 Ollama / vLLM 等本地 LLM 后端。
 
 **Q：安装后对现有工具有影响吗？**
-A：完全没有。只需将 API 地址改为 `http://127.0.0.1:8788/v1`，现有代码和工具无需任何改动。
+A：完全没有。只需将 API 地址改为 `http://127.0.0.1:8788/v1`，现有代码和工具无需任何改动。桌面版使用 `imodel-cli config setup` 可以一键自动配置。
 
 **Q：免费版和付费版有什么区别？**
-A：免费版可体验核心路由功能，有 1 个 API Key 额度、3 个模型上限。Pro 版（¥9.99/月）解锁 Token 压缩、最多 10 个 API Key 和 10 个模型等高级功能。企业版（¥99.99/月）提供无上限的 API Key、模型和自定义分类路由，支持局域网分发。
+A：免费版可体验核心路由功能，有 1 个 API Key 额度、3 个模型上限。Pro 版（¥9.99/月）解锁 Token 压缩、最多 10 个 API Key 和 10 个模型等高级功能。企业版（¥99.99/月）提供无上限的转发 API Key、模型和自定义分类路由，支持局域网分发，也是 iModel-Server 的订阅基础。
 
 **Q：可以按月订阅吗？可以随时取消吗？**
 A：可以。按月订阅，随时取消，不扣违约金。
+
+**Q：iModel-Server 和桌面版有什么区别？能同时用吗？**
+A：iModel-Server 是无界面的企业级服务器形态，默认 LAN 可达，支持 SSO、审计、系统服务等企业级能力。默认不允许与桌面版同机并存（端口冲突），但可以通过不同端口和数据目录配置并存。提供 `imodel-server migrate` 命令一键从桌面版迁移。
+
+**Q：iModel-Server 需要联网吗？**
+A：代理 LLM API 需要互联网；iModel-web 账号同步也需要网络。但如果 iModel-web 不可达，本地管理员密码可作为兜底继续管理。完全离线（air-gapped）场景需要接入本地 LLM 后端（Ollama / vLLM），这是未来规划中的扩展方向。
+
+**Q：如何从桌面版迁移到 iModel-Server？**
+A：运行 `imodel-server migrate <旧数据目录>`，自动备份旧目录、迁移配置与统计数据、转换兼容字段。支持 `--dry-run` 预览和 `--rollback` 回滚。旧数据保留 30 天。
 
 <br>
 
@@ -438,7 +555,8 @@ A：可以。按月订阅，随时取消，不扣违约金。
 
 <br>
 
-*版本 2.0.35 · 支持 macOS / Windows / Linux*
+*版本 2.0.61 · 支持 macOS / Windows / Linux*
+*iModel-Server 企业定制版 · 合作咨询 cooperate@imodel.work*
 *如有任何问题，请发送邮件至 support@imodel.work*
 
 <br>
