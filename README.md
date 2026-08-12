@@ -181,83 +181,18 @@ AI 对话中，历史消息越长，Token 消耗越大。爱魔豆的压缩引�
 
 iModel-Server 将爱魔豆从"桌面工具"升级为"基础设施"：
 
-<br>
-
-**🔐 企业级安全（v1 标配，对标 Synology DSM 7.2+）**
-
-| 能力                  | 说明                                                         |
-| :-------------------- | :----------------------------------------------------------- |
-| **默认 HTTPS**        | 首启自动生成自签证书（Ed25519/RSA），可选 Let's Encrypt 正式证书 |
-| **SSO 单点登录**      | OIDC + SAML 2.0 同时支持（Azure AD / Keycloak / Okta / Google） |
-| **本地管理员兜底**    | SSO 不可达时仍可管理，首启引导创建本地管理员                 |
-| **作用域 Admin Key**  | 每个 Key 带权限子集（`stats.read` / `config.write` 等），只显示一次，SHA-256 存储 |
-| **IP 自动封禁**       | 登录失败超限自动封禁（可配阈值 + IPv6 /64 前缀封禁）         |
-| **可信网络层**        | CIDR 白名单，可信子网降摩擦（每次请求重验来源 IP）           |
-| **关键操作审计**      | 登录/登出/配置变更/Key 管理/会话撤销全审计，append-only 不可篡改 |
-| **会话管理**          | 列出所有登录设备，可单独撤销，空闲 90 天自动清理             |
-| **Clickjacking 防护** | 默认开启 `X-Frame-Options: DENY` + CSP                       |
-| **密码策略**          | 强密码下限 12 字符、可选密码过期、首次登录强制改密           |
-
-<br>
-
-**🖥️ 服务器形态 · 运维友好**
-
-| 能力                 | 说明                                                         |
-| :------------------- | :----------------------------------------------------------- |
-| **系统服务**         | systemd / launchd / Windows Service (NSSM) 一键安装          |
-| **Docker**           | 多架构镜像（amd64 + arm64），单卷挂载所有数据                |
-| **单端口模型**       | 8788 同时服务代理 + 管理面 + WebUI + /health，路由级鉴权隔离 |
-| **mDNS 发现**        | 广播 `imodelserver.local`，装完即找到（对标 Home Assistant） |
-| **CLI 生命周期管理** | `imodel-server start/stop/status/logs/doctor/update`         |
-| **回滚机制**         | DB 备份 3 份、配置备份 5 份、旧版本二进制 1 份               |
-| **优雅迁移**         | `imodel-server migrate <旧目录>` 一键从桌面版迁移，支持 dry-run / rollback |
-| **反向代理友好**     | 支持 nginx / Caddy / Tailscale serve，trusted_proxies 白名单 |
-| **/health + /ready** | Kubernetes / systemd 健康检查就绪                            |
-
-<br>
-
-**🌐 WebUI 管理界面（P4 完成，8 个页面）**
-
-| 页面              | 功能                                           |
-| :---------------- | :--------------------------------------------- |
-| 🏠 **Overview**    | 概览：服务状态、今日请求/Token/延迟、故障告警  |
-| 📊 **Routing**     | 模型路由：实时状态、24h 趋势图、队列、最近请求 |
-| 🏷️ **Categories**  | 分类路由：分类管理、分布图表、启用/禁用        |
-| 🔑 **Entries**     | 转发令牌：API Key 管理、复制、统计             |
-| 🗜 **Compress**    | Token 压缩：压缩率、趋势、配置管理             |
-| 🧩 **Config Apps** | 客户端配置：一键配置 Claude Code/Cursor 等     |
-| 📝 **Feedback**    | 用户反馈：提交反馈、查看待发送队列             |
-| ⚙️ **Settings**    | 设置：会话管理、Admin Key、TLS 证书            |
-
-统一导航栏、oklch 设计系统、Auto/Light/Dark 主题自适应。
-
-<br>
-
-**🔌 CLI `imodel-server` · 瘦 HTTP 客户端**
-
-```bash
-imodel-server
-├─ run                        # 前台运行（容器 / 调试）
-├─ install / uninstall        # 注册/注销平台服务
-├─ start / stop / restart     # 服务控制
-├─ status [--json] [--check]  # systemctl 风格状态
-├─ logs [--follow] [--grep=]  # 日志查看
-├─ setup                      # 首次引导（严格本机 only）
-├─ migrate <旧目录>           # 从桌面版迁移
-├─ config get/set/edit/reload/rollback
-├─ entry list/add/remove/regenerate
-├─ provider list/add/update/verify
-├─ category list/add/edit/remove
-├─ stats today/hourly/summary/top [--watch]
-├─ compress status/profile/model
-├─ config-apps list/apply     # 客户端一键配置
-├─ update check/apply/rollback
-├─ tls setup/show/fingerprint # 自签证书管理
-├─ doctor                     # 诊断：端口/权限/数据库/配置
-└─ api <METHOD> <PATH>        # 原始请求透传（调试）
-```
-
-> 所有管理命令走 `/admin/*` HTTP API，CLI 与 WebUI 调用同一条 API 路径，行为永不分歧。
+- 🔐 **HTTPS 默认启用**：首启自动生成自签证书，可选 Let's Encrypt 正式证书
+- 🔑 **SSO 单点登录**：OIDC + SAML 2.0 同时支持，对接 Azure AD / Keycloak / Okta / Google
+- 🛡️ **作用域 Admin Key**：每个 Key 带权限子集，最小权限原则，SHA-256 存储
+- 🚫 **IP 自动封禁**：登录失败超限自动封禁，可信网络 CIDR 白名单降摩擦
+- 📋 **关键操作审计**：登录 / 配置变更 / Key 管理 / 会话撤销全审计，append-only 不可篡改
+- 🖥️ **系统服务**：systemd / launchd / Windows Service (NSSM) 一键安装，开机自启
+- 🐳 **Docker 多架构镜像**：amd64 + arm64，单卷挂载所有数据
+- 📡 **mDNS 局域网发现**：广播 `imodelserver.local`，装完即找到
+- 🌐 **WebUI 管理界面**：统一导航栏、oklch 设计系统、Auto/Light/Dark 主题自适应
+- 🔌 **CLI `imodel-server`**：30+ 子命令，完整生命周期管理，瘦 HTTP 客户端
+- 🔄 **桌面版一键迁移**：`imodel-server migrate` 支持 dry-run / rollback
+- 🩺 **健康检查就绪**：`/health` + `/ready`，Kubernetes / systemd 直接对接
 
 <br>
 
